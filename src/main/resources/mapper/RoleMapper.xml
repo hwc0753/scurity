@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.he.scurity.dao.RoleMapper">
+
+
+    <select id="getByUserId" parameterType="java.lang.Long" resultType="com.he.scurity.domain.security.vo.Role">
+         SELECT
+        r.*
+    FROM
+        t_user_role_relation rr
+        LEFT JOIN t_user u ON u.ID = rr.u_id
+        LEFT JOIN t_role r ON rr.r_id = r.ID
+    WHERE
+        u_id = #{id}
+
+    </select>
+
+
+</mapper>
